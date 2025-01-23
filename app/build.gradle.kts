@@ -40,6 +40,9 @@ android {
     buildFeatures {
         compose = true
     }
+    hilt {
+        enableAggregatingTask = true
+    }
 }
 
 dependencies {
