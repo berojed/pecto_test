@@ -9,4 +9,6 @@ interface CardRepository {
     suspend fun getCard(id: Int): NetworkCard?
 
     suspend fun downloadAudio(outputDir: File)
+
+    fun release()
 }

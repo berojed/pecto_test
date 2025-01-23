@@ -59,4 +59,8 @@ class CardRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override fun release() {
+        httpClient.close()
+    }
 }
