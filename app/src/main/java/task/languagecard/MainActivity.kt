@@ -5,14 +5,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dagger.hilt.android.AndroidEntryPoint
+import task.languagecard.ui.screen.LanguageCardsScreen
 import task.languagecard.ui.theme.LanguageCardTheme
+import task.languagecard.viewmodel.card.CardViewModel
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -21,29 +23,22 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             LanguageCardTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                val viewModel = hiltViewModel<CardViewModel>()
+                val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
+                val context = LocalContext.current
+
+                LaunchedEffect(Unit) {
+                    viewModel.start(context)
                 }
+
+                LanguageCardsScreen(
+                    uiState = uiState,
+                    onCardClick = viewModel::flipCard,
+                    onCardAppear = viewModel::playCardAudio,
+                    modifier = Modifier.fillMaxSize()
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    LanguageCardTheme {
-        Greeting("Android")
     }
 }
