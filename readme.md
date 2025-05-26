@@ -14,6 +14,49 @@ Instructions:
 Library dependencies are not fully set up, so some package issues may prevent running the tests. Otherwise, instructions are straightforward.
 Build gradle is not properly configured(Error: Cannot access 'org.gradle.api.internal.catalog.AbstractExternalDependencyFactory.PluginFactory' which is a supertype of 'org.gradle.accessors.dm.LibrariesForLibsInPluginsBlock.PluginAccessors'. Check your module classpath for missing or conflicting dependencies.).
 
+##  How to Run UI Tests
+
+1. **Open the project in Android Studio**  
+   Open the root directory of the project (where `settings.gradle` is located).
+
+2. **Connect an emulator or physical device**  
+   Start an Android emulator, or connect your Android device with USB debugging enabled.
+
+3. **Run the instrumented tests**
+
+   - **From Android Studio:**
+     - In the Project view, expand `app/src/androidTest/java/`
+     - Right-click the `FlashCardTest` class (or the `androidTest` package)
+     - Select **Run 'FlashCardTest'** or **Run Tests in 'androidTest'**
+
+   - **From the Terminal:**
+     - In the project root directory, run:
+       ```
+       ./gradlew connectedAndroidTest
+       ```
+       On Windows, use:
+       ```
+       gradlew connectedAndroidTest
+       ```
+
+4. **View the test results**
+
+   - In Android Studio, results will appear in the "Run" or "Test Results" window.
+   - From the terminal, you can open the HTML report at:
+     ```
+     app/build/reports/androidTests/connected/index.html
+     ```
+
+---
+
+### Troubleshooting
+
+- Make sure the test file is inside `app/src/androidTest/java/`.
+- If you have issues, run **File > Sync Project with Gradle Files** and **Build > Clean Project**.
+- All required dependencies must be installed and project synced.
+
+
+
 # Requirements:
 
 For this evaluation, the main requirements are:
