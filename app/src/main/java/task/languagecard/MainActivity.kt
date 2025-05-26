@@ -15,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import task.languagecard.ui.screen.LanguageCardsScreen
 import task.languagecard.ui.theme.LanguageCardTheme
 import task.languagecard.viewmodel.card.CardViewModel
+import task.languagecard.viewmodel.card.CardViewModel_HiltModules
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

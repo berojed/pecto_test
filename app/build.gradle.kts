@@ -57,6 +57,7 @@ dependencies {
 
     // Serialization
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.ui.test.junit4.android)
 
     // DI
     ksp(libs.hilt.android.compiler)

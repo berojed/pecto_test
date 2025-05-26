@@ -2,6 +2,18 @@
   <h1>Language Card Android App</h1>
 </div>
 
+# Notes after testing the app: 
+
+Functionality:
+The app allows the user to flip flashcards by clicking on them, shows the translated text, reads the translation aloud using speech, and supports scrolling through the cards. No other features are implemented.
+
+Code Quality:
+The code is clean and readable, following Compose practices.
+
+Instructions:
+Library dependencies are not fully set up, so some package issues may prevent running the tests. Otherwise, instructions are straightforward.
+Build gradle is not properly configured(Error: Cannot access 'org.gradle.api.internal.catalog.AbstractExternalDependencyFactory.PluginFactory' which is a supertype of 'org.gradle.accessors.dm.LibrariesForLibsInPluginsBlock.PluginAccessors'. Check your module classpath for missing or conflicting dependencies.).
+
 # Requirements:
 
 For this evaluation, the main requirements are:
